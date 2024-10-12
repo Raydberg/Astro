@@ -1,0 +1,19 @@
+---
+import MainLayout from "../layout/MainLayout.astro";
+import type { PokemonListResponse } from "../interfaces/data-liste.response";
+import PokemonCards from "../components/pokemons/PokemonCards.astro";
+const resp = await fetch("https://pokeapi.co/api/v2/pokemon");
+const data = (await resp.json()) as PokemonListResponse;
+---
+
+<MainLayout title="Index Page">
+  <h1 class="text-3xl">Lista de Pokemons</h1>
+  <hr />
+  <section
+    aria-label="Listado de Pokemons"
+    class="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-4"
+  >
+      {data.results.map(({name,url}) => <PokemonCards name={name} url={url} />)}
+   
+  </section>
+</MainLayout>

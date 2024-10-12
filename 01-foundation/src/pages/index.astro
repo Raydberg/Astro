@@ -1,0 +1,16 @@
+---
+import MainLayout from "../layout/MainLayout.astro";
+---
+<MainLayout title="Index page">
+  <h1>Hola Index Page</h1>
+  <p></p>
+  <footer></footer>
+  <script>
+    const currentYear: number = new Date().getFullYear();
+    const footer = document.querySelector("footer") as HTMLElement;
+    footer.innerText = `Año ${currentYear}`;
+    const currenMoment: string = new Date().toLocaleTimeString();
+    const parrafo = document.querySelector("p") as HTMLElement;
+    parrafo.innerHTML = `Momento Actual ${currenMoment}`;
+  </script>
+</MainLayout>
